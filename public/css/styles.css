@@ -1,26 +1,21 @@
-/* ------------------------
-GLOBAL STYLES
--------------------------*/
-
 body{
 font-family: Arial, Helvetica, sans-serif;
 margin:0;
 background:#f4f7fb;
 color:#222;
+line-height:1.6;
 }
 
 main{
 padding:20px;
 }
 
-h1,h2{
+h1,h2,h3{
 margin-top:0;
 color:#001f3f;
 }
 
-/* ------------------------
-HEADER
--------------------------*/
+/* HEADER */
 
 .site-header{
 display:flex;
@@ -36,13 +31,13 @@ font-size:26px;
 font-weight:bold;
 }
 
-.account{
+.account-link{
+color:white;
+text-decoration:none;
 font-size:14px;
 }
 
-/* ------------------------
-NAVIGATION
--------------------------*/
+/* NAVIGATION */
 
 nav{
 background:#003366;
@@ -64,16 +59,13 @@ margin-right:18px;
 color:white;
 text-decoration:none;
 font-weight:bold;
-transition:0.3s;
 }
 
 .nav-list a:hover{
-color:#9cc4ff;
+text-decoration:underline;
 }
 
-/* ------------------------
-HERO SECTION
--------------------------*/
+/* HERO */
 
 .hero{
 background:white;
@@ -112,9 +104,7 @@ button:hover{
 background:#003366;
 }
 
-/* ------------------------
-HOME SECTIONS
--------------------------*/
+/* HOME SECTIONS */
 
 .home-sections{
 display:flex;
@@ -122,9 +112,8 @@ flex-direction:column;
 gap:30px;
 }
 
-/* upgrades */
-
-.upgrades{
+.upgrades,
+.reviews{
 background:white;
 padding:20px;
 border-radius:8px;
@@ -146,34 +135,13 @@ width:100%;
 border-radius:6px;
 }
 
-.upgrade-item p{
-margin-top:8px;
-font-weight:bold;
-color:#003366;
-}
-
-/* reviews */
-
-.reviews{
-background:white;
-padding:20px;
-border-radius:8px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
-}
-
-.reviews ul{
-padding-left:20px;
-}
-
 .reviews img{
 width:100%;
 margin-top:15px;
 border-radius:8px;
 }
 
-/* ------------------------
-FOOTER
--------------------------*/
+/* FOOTER */
 
 footer{
 background:#001f3f;
@@ -183,9 +151,7 @@ padding:18px;
 margin-top:30px;
 }
 
-/* ------------------------
-MEDIA QUERY
--------------------------*/
+/* RESPONSIVE */
 
 @media screen and (min-width:768px){
 
@@ -202,7 +168,7 @@ width:50%;
 flex-direction:row;
 }
 
-.upgrades, .reviews{
+.upgrades,.reviews{
 flex:1;
 }
 
