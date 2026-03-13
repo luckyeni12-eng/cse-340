@@ -5,7 +5,7 @@ const expressLayouts = require("express-ejs-layouts")
 const app = express()
 
 /* ***********************
-View Engine
+View Engines
 *************************/
 
 app.set("view engine", "ejs")
