@@ -1,9 +1,9 @@
-// Needed Resources 
 const express = require("express")
-const router = new express.Router() 
-const invController = require("../controllers/invController")
+const router = express.Router()
 
-// Route to build inventory by classification view
-router.get("/type/:classificationId", invController.buildByClassificationId)
+const invController = require("../controllers/inventoryController")
+
+// ✅ FIXED: param name MUST match controller
+router.get("/type/:classification_name", invController.buildByClassification)
 
 module.exports = router

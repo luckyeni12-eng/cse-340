@@ -1,27 +1,40 @@
 const invModel = require("../models/inventory-model")
-const Util = {}
 
-/* ************************
- * Constructs the nav HTML unordered list
- ************************** */
-Util.getNav = async function (req, res, next) {
-  let data = await invModel.getClassifications()
-  let list = "<ul>"
-  list += '<li><a href="/" title="Home page">Home</a></li>'
-  data.rows.forEach((row) => {
-    list += "<li>"
-    list +=
-      '<a href="/inv/type/' +
-      row.classification_id +
-      '" title="See our inventory of ' +
-      row.classification_name +
-      ' vehicles">' +
-      row.classification_name +
-      "</a>"
-    list += "</li>"
-  })
-  list += "</ul>"
-  return list
+// Build the navigation menu dynamically
+async function getNav() {
+  try {
+    const classifications = await invModel.getClassifications()
+
+    if (!Array.isArray(classifications) || classifications.length === 0) {
+      return '<ul id="nav"><li><a href="/inv/">All</a></li></ul>'
+    }
+
+    let navHTML = '<ul id="nav">'
+    navHTML += '<li><a href="/inv/">All</a></li>'
+
+    classifications.forEach((cls) => {
+      navHTML += `<li><a href="/inv/classification/${cls.classification_name}">${cls.classification_name}</a></li>`
+    })
+
+    navHTML += '</ul>'
+    return navHTML
+  } catch (err) {
+    console.error("Error building navigation:", err)
+    return '<ul id="nav"><li><a href="/inv/">All</a></li></ul>'
+  }
 }
 
-module.exports = Util
+function formatCurrency(num) {
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(num)
+}
+
+function formatMileage(num) {
+  return new Intl.NumberFormat("en-US").format(num)
+}
+
+module.exports = {
+  getNav,
+  formatCurrency,
+  formatMileage,
+
+}
